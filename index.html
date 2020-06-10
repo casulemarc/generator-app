@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Javascript2</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="style2.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!--chart js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.0.min.js"
+      integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container-1">
+      <h2>Kongolo App:</h2>
+      <h4>Hi, I'm Kongolo: Whats your age?</h4>
+      <div class="flex-container-1">
+        <div>
+          <button class="btn btn-success" onclick="ageInDays()">
+            Click Me
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-danger" onclick="reset()">Reset</button>
+        </div>
+      </div>
+      <div class="flex-container-1">
+        <div id="flex-box-result"></div>
+      </div>
+      <div class="flex-container-2">
+        <button class="btn btn-primary">Being Me</button>
+      </div>
+    </div>
+
+    <div class="container-2">
+      <h2>Uganda Flag Generator</h2>
+      <button class="btn btn-success" id="btn-generator" onclick="generator()">
+        Generate Flag
+      </button>
+      <div class="flex-container-3" id="flag-generator"></div>
+    </div>
+
+    <section class="button-2">
+      <div class="container" id="contact-greeting">
+        <div class="row">
+          <div class="col name-box">
+            <h3>Let's get in touch buddy!</h3>
+            <label for="full-name">Full Name:</label>
+            <input
+              type="text"
+              name="full-name"
+              id="full-name-input"
+              placeholder="Enter Your Full Name!"
+            />
+            <br /><br />
+            <button class="btn btn-primary" onclick="fullName()" id="full-name">
+              Submit
+            </button>
+          </div>
+          <div class="col reply-box" id="greeting-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="grid-parent">
+        <div class="card">
+          <img
+            src="https://media1.giphy.com/media/azkPoG0tuHlnO/source.gif"
+            alt=""
+          />
+          <h5>header 5</h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
+            eligendi est perferendis necessitatibus, voluptas nisi architecto
+            amet aliquid veritatis. Minima dolorem odit, qui totam consequuntur
+            impedit obcaecati excepturi quaerat eos?
+          </p>
+          <button class="btn btn-primary">Read More</button>
+        </div>
+        <div class="card">
+          <img
+            src="https://media1.giphy.com/media/azkPoG0tuHlnO/source.gif"
+            alt=""
+          />
+          <h5>header 5</h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
+            eligendi est perferendis necessitatibus, voluptas nisi architecto
+            amet aliquid veritatis. Minima dolorem odit, qui totam consequuntur
+            impedit obcaecati excepturi quaerat eos? Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Non dolores quidem tempora recusandae
+            harum nobis aut, hic vel perferendis pariatur dolore, inventore
+            fugit, nisi rem placeat quaerat ipsum dolor ipsam. Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Voluptatum, eum et suscipit
+            cum animi aliquam asperiores inventore nam, eos esse quasi
+            consequuntur nobis. Dolore fuga voluptas, minima laudantium eius
+            architecto.
+          </p>
+          <button class="btn btn-primary">Read More</button>
+        </div>
+        <div class="card">
+          <img
+            src="https://media1.giphy.com/media/azkPoG0tuHlnO/source.gif"
+            alt=""
+          />
+          <h5>header 5</h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam
+            eligendi est perferendis necessitatibus, voluptas nisi architecto
+            amet aliquid veritatis. Minima dolorem odit, qui totam consequuntur
+            impedit obcaecati excepturi quaerat eos?
+          </p>
+          <button class="btn btn-primary">Read More</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer row">
+      <div class="col">
+        <p>
+          <a href="index.html" style="text-decoration: none; color: yellow;"
+            >Created By Mark Kasule</a
+          >
+        </p>
+      </div>
+      <div class="col">
+        <p>Open Source Code</p>
+      </div>
+    </div>
+
+    <canvas id="mycanvas" width="256" height="256">
+      <script>
+        $(document).ready(function(){
+          var ctx = $("#mycanvas").get(0).getContext("2d");
+  
+          //pie chart data
+          //sum of values = 360
+          var data = [
+            {
+              value: 270,
+              color: "cornflowerblue",
+              highlight: "lightskyblue",
+              label: "Corn Flower Blue"
+            },
+            {
+              value: 50,
+              color: "lightgreen",
+              highlight: "yellowgreen",
+              label: "Lightgreen"
+            },
+            {
+              value: 40,
+              color: "orange",
+              highlight: "darkorange",
+              label: "Orange"
+            }
+          ];
+  
+          //draw
+          var piechart = new Chart(ctx).Pie(data);
+        });
+      </script>
+
+    <!-- JavaScript -->
+    <script src="script2.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
